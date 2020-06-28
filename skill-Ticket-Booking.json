@@ -1,0 +1,653 @@
+{
+  "intents": [
+    {
+      "intent": "booking",
+      "examples": [
+        {
+          "text": "book me a ticket"
+        },
+        {
+          "text": "book for me"
+        },
+        {
+          "text": "give a ticket"
+        },
+        {
+          "text": "give me a ticket"
+        },
+        {
+          "text": "book a ticket"
+        }
+      ],
+      "description": ""
+    },
+    {
+      "intent": "good_bye",
+      "examples": [
+        {
+          "text": "ok thanks"
+        },
+        {
+          "text": "c ya"
+        },
+        {
+          "text": "ok"
+        },
+        {
+          "text": "bye"
+        },
+        {
+          "text": "thanks"
+        },
+        {
+          "text": "good bye"
+        },
+        {
+          "text": "thank you"
+        }
+      ],
+      "description": ""
+    },
+    {
+      "intent": "greetings",
+      "examples": [
+        {
+          "text": "hiii"
+        },
+        {
+          "text": "hello!"
+        },
+        {
+          "text": "hola"
+        },
+        {
+          "text": "hey"
+        },
+        {
+          "text": "hi"
+        },
+        {
+          "text": "hello"
+        }
+      ],
+      "description": ""
+    }
+  ],
+  "entities": [
+    {
+      "entity": "booking_source",
+      "values": [
+        {
+          "type": "synonyms",
+          "value": "patna junction",
+          "synonyms": [
+            "junction"
+          ]
+        },
+        {
+          "type": "synonyms",
+          "value": "gandhi maidan",
+          "synonyms": []
+        },
+        {
+          "type": "synonyms",
+          "value": "kurji",
+          "synonyms": []
+        },
+        {
+          "type": "synonyms",
+          "value": "rajendra nagar",
+          "synonyms": []
+        },
+        {
+          "type": "synonyms",
+          "value": "kumhrar",
+          "synonyms": []
+        },
+        {
+          "type": "synonyms",
+          "value": "hanuman nagar",
+          "synonyms": []
+        },
+        {
+          "type": "synonyms",
+          "value": "agamkuan",
+          "synonyms": []
+        },
+        {
+          "type": "synonyms",
+          "value": "bailey road",
+          "synonyms": []
+        },
+        {
+          "type": "synonyms",
+          "value": "boring road",
+          "synonyms": []
+        },
+        {
+          "type": "synonyms",
+          "value": "danapur",
+          "synonyms": []
+        }
+      ],
+      "fuzzy_match": true
+    },
+    {
+      "entity": "booking_destination",
+      "values": [
+        {
+          "type": "synonyms",
+          "value": "kumhrar",
+          "synonyms": []
+        },
+        {
+          "type": "synonyms",
+          "value": "rajendra nagar",
+          "synonyms": []
+        },
+        {
+          "type": "synonyms",
+          "value": "patna junction",
+          "synonyms": [
+            "junction"
+          ]
+        },
+        {
+          "type": "synonyms",
+          "value": "agamkuan",
+          "synonyms": []
+        },
+        {
+          "type": "synonyms",
+          "value": "bailey road",
+          "synonyms": []
+        },
+        {
+          "type": "synonyms",
+          "value": "boring road",
+          "synonyms": []
+        },
+        {
+          "type": "synonyms",
+          "value": "danapur",
+          "synonyms": []
+        },
+        {
+          "type": "synonyms",
+          "value": "gandhi maidan",
+          "synonyms": []
+        },
+        {
+          "type": "synonyms",
+          "value": "hanuman nagar",
+          "synonyms": []
+        },
+        {
+          "type": "synonyms",
+          "value": "kurji",
+          "synonyms": []
+        }
+      ],
+      "fuzzy_match": true
+    },
+    {
+      "entity": "sys-number",
+      "values": [],
+      "fuzzy_match": true
+    },
+    {
+      "entity": "greetings",
+      "values": [
+        {
+          "type": "synonyms",
+          "value": "good evening",
+          "synonyms": [
+            "gud evening",
+            "gd evening",
+            "evening",
+            "eveng"
+          ]
+        },
+        {
+          "type": "synonyms",
+          "value": "good morning",
+          "synonyms": [
+            "gud morning",
+            "gd mrning",
+            "morning",
+            "mrning",
+            "gm",
+            "gd mrng"
+          ]
+        },
+        {
+          "type": "synonyms",
+          "value": "good afternoon",
+          "synonyms": [
+            "gud aftrnoon",
+            "gd afternun",
+            "afternoon",
+            "aftrnun",
+            "gud aftrnun"
+          ]
+        }
+      ],
+      "fuzzy_match": true
+    }
+  ],
+  "metadata": {
+    "api_version": {
+      "major_version": "v2",
+      "minor_version": "2018-11-08"
+    }
+  },
+  "dialog_nodes": [
+    {
+      "type": "response_condition",
+      "output": {
+        "generic": [
+          {
+            "source": "https://i.ibb.co/k6tmG0h/places.jpg",
+            "response_type": "image"
+          }
+        ]
+      },
+      "parent": "node_3_1593193310308",
+      "conditions": "#booking",
+      "dialog_node": "response_1_1593269731056"
+    },
+    {
+      "type": "event_handler",
+      "output": {
+        "text": {
+          "values": [
+            "Enter the source place"
+          ],
+          "selection_policy": "sequential"
+        }
+      },
+      "parent": "slot_9_1593176080557",
+      "event_name": "focus",
+      "dialog_node": "handler_2_1593176080714",
+      "previous_sibling": "handler_1_1593176080713"
+    },
+    {
+      "type": "event_handler",
+      "output": {},
+      "parent": "slot_9_1593176080557",
+      "context": {
+        "booking_source": "@booking_source"
+      },
+      "conditions": "@booking_source",
+      "event_name": "input",
+      "dialog_node": "handler_1_1593176080713"
+    },
+    {
+      "type": "slot",
+      "parent": "node_7_1593176033460",
+      "variable": "$booking_source",
+      "dialog_node": "slot_9_1593176080557",
+      "previous_sibling": "node_9_1593194700652"
+    },
+    {
+      "type": "slot",
+      "parent": "node_7_1593176033460",
+      "variable": "$booking_destination",
+      "dialog_node": "slot_5_1593177718727",
+      "previous_sibling": "slot_9_1593176080557"
+    },
+    {
+      "type": "slot",
+      "parent": "node_7_1593176033460",
+      "variable": "$number",
+      "dialog_node": "slot_7_1593193222687",
+      "previous_sibling": "slot_5_1593177718727"
+    },
+    {
+      "type": "standard",
+      "title": "Deleting context variables",
+      "parent": "node_7_1593176033460",
+      "next_step": {
+        "behavior": "jump_to",
+        "selector": "body",
+        "dialog_node": "node_1_1593194771768"
+      },
+      "conditions": "true",
+      "dialog_node": "node_9_1593194700652",
+      "previous_sibling": "response_1_1593279871761"
+    },
+    {
+      "type": "response_condition",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "Your ticket booking from $booking_source to $booking_destination is successfully processed. Feel free to pay with QR code given below."
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "parent": "node_7_1593176033460",
+      "disabled": true,
+      "dialog_node": "response_1_1593279871761"
+    },
+    {
+      "type": "event_handler",
+      "output": {
+        "text": {
+          "values": [
+            "How many tickets you want?"
+          ],
+          "selection_policy": "sequential"
+        }
+      },
+      "parent": "slot_7_1593193222687",
+      "event_name": "focus",
+      "dialog_node": "handler_2_1593193222693",
+      "previous_sibling": "handler_8_1593193222693"
+    },
+    {
+      "type": "event_handler",
+      "output": {},
+      "parent": "slot_7_1593193222687",
+      "context": {
+        "number": "@sys-number"
+      },
+      "conditions": "@sys-number",
+      "event_name": "input",
+      "dialog_node": "handler_8_1593193222693"
+    },
+    {
+      "type": "event_handler",
+      "output": {
+        "text": {
+          "values": [
+            "Enter the destination place"
+          ],
+          "selection_policy": "sequential"
+        }
+      },
+      "parent": "slot_5_1593177718727",
+      "event_name": "focus",
+      "dialog_node": "handler_6_1593177718733",
+      "previous_sibling": "handler_3_1593177718733"
+    },
+    {
+      "type": "event_handler",
+      "output": {},
+      "parent": "slot_5_1593177718727",
+      "context": {
+        "booking_destination": "@booking_destination"
+      },
+      "conditions": "@booking_destination",
+      "event_name": "input",
+      "dialog_node": "handler_3_1593177718733"
+    },
+    {
+      "type": "response_condition",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "Hi! Good afternoon, how may I help you?"
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "parent": "node_7_1593175072216",
+      "conditions": "@greetings:(good afternoon)",
+      "dialog_node": "response_6_1593175149160",
+      "previous_sibling": "response_7_1593175112161"
+    },
+    {
+      "type": "response_condition",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "Hello! How may I help you?"
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "parent": "node_7_1593175072216",
+      "conditions": "#greetings",
+      "dialog_node": "response_4_1593175206313",
+      "previous_sibling": "response_10_1593175174035"
+    },
+    {
+      "type": "response_condition",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "Hey! Have a nice day..."
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "parent": "node_7_1593175072216",
+      "conditions": "anything_else",
+      "dialog_node": "response_8_1593175271016",
+      "previous_sibling": "response_4_1593175206313"
+    },
+    {
+      "type": "response_condition",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "Hello! Good evening, how may I help you?"
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "parent": "node_7_1593175072216",
+      "conditions": "@greetings:(good evening)",
+      "dialog_node": "response_10_1593175174035",
+      "previous_sibling": "response_6_1593175149160"
+    },
+    {
+      "type": "response_condition",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "Hey! Good morning, how may I help you?"
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "parent": "node_7_1593175072216",
+      "conditions": "@greetings:(good morning)",
+      "dialog_node": "response_7_1593175112161"
+    },
+    {
+      "type": "frame",
+      "title": "Book tickets",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "Your ticket booking from $booking_source to $booking_destination is successfully processed. Feel free to pay with QR code given below."
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "metadata": {
+        "_customization": {
+          "mcr": false
+        }
+      },
+      "next_step": {
+        "behavior": "skip_user_input"
+      },
+      "conditions": "#booking",
+      "dialog_node": "node_7_1593176033460",
+      "previous_sibling": "node_3_1593193310308"
+    },
+    {
+      "type": "standard",
+      "title": "Anything else",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "I didn't understand. You can try rephrasing."
+              },
+              {
+                "text": "Can you reword your statement? I'm not understanding."
+              },
+              {
+                "text": "I didn't get your meaning."
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "conditions": "anything_else",
+      "dialog_node": "Anything else",
+      "previous_sibling": "node_4_1593195725718",
+      "disambiguation_opt_out": true
+    },
+    {
+      "type": "standard",
+      "title": "QR code",
+      "output": {
+        "generic": [
+          {
+            "source": "https://i.ibb.co/XJhGzQk/QR-code.jpg",
+            "response_type": "image"
+          }
+        ]
+      },
+      "conditions": "#booking",
+      "dialog_node": "node_1_1593194771768",
+      "previous_sibling": "node_7_1593176033460"
+    },
+    {
+      "type": "standard",
+      "title": "Greetings",
+      "metadata": {
+        "_customization": {
+          "mcr": true
+        }
+      },
+      "conditions": "#greetings || @greetings",
+      "dialog_node": "node_7_1593175072216",
+      "previous_sibling": "Welcome"
+    },
+    {
+      "type": "standard",
+      "title": "Thanks",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "Thanks for booking with us. Your ticket is booked...!!"
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "conditions": "#good_bye",
+      "dialog_node": "node_4_1593195725718",
+      "previous_sibling": "node_1_1593194771768"
+    },
+    {
+      "type": "standard",
+      "title": "Service",
+      "metadata": {
+        "_customization": {
+          "mcr": true
+        }
+      },
+      "next_step": {
+        "behavior": "jump_to",
+        "selector": "condition",
+        "dialog_node": "node_7_1593176033460"
+      },
+      "conditions": "#booking",
+      "dialog_node": "node_3_1593193310308",
+      "previous_sibling": "node_7_1593175072216"
+    },
+    {
+      "type": "standard",
+      "title": "Welcome",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "Hello! I am PyCoder, a chatbot and I am here to book your transport tickets in few minutes."
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "conditions": "welcome",
+      "dialog_node": "Welcome"
+    }
+  ],
+  "counterexamples": [],
+  "system_settings": {
+    "off_topic": {
+      "enabled": true
+    },
+    "disambiguation": {
+      "prompt": "Did you mean:",
+      "enabled": true,
+      "randomize": true,
+      "max_suggestions": 5,
+      "suggestion_text_policy": "title",
+      "none_of_the_above_prompt": "None of the above"
+    },
+    "system_entities": {
+      "enabled": true
+    },
+    "human_agent_assist": {
+      "prompt": "Did you mean:"
+    },
+    "spelling_auto_correct": true
+  },
+  "learning_opt_out": false,
+  "name": "Ticket Booking",
+  "language": "en",
+  "description": ""
+}
