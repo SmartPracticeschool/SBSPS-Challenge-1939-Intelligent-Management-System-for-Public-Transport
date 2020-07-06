@@ -1,0 +1,10 @@
+Organization ID
+sjhpga
+Device Type
+Temperature_calculator
+Device ID
+TSK-7321
+Authentication Method
+use-token-auth
+Authentication Token
+8789562030
